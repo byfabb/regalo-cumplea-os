@@ -59,14 +59,13 @@
             padding: 60px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Drop shadow para la carta */
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
             max-width: 1200px; /* Carta más grande */
-            font-size: 48px; /* Aumento del tamaño del texto dentro de la carta */
+            font-size: 36px; /* Texto más grande */
             color: #333;
             line-height: 1.8;
             z-index: 3;
@@ -79,7 +78,7 @@
         /* Estilo del título de la carta */
         .letter h2 {
             margin-top: 0;
-            font-size: 60px; /* Título más grande */
+            font-size: 48px; /* Título más grande */
             text-align: center;
             color: #e74c3c;
             font-family: 'Playfair Display', serif;
@@ -136,7 +135,7 @@
 </head>
 <body>
     <div class="envelope-container" onclick="openLetter()">
-        <div class="envelope"></div>
+        <div class="envelope" id="envelope"></div>
         <!-- Carta que se revela al hacer clic -->
         <div class="letter" id="letter">
             <h2>Hola, Vale!</h2>
@@ -158,10 +157,14 @@
     <script>
         function openLetter() {
             document.getElementById("letter").classList.add("show");
+            // Eliminar el efecto wiggle del sobre al hacer clic
+            document.getElementById("envelope").style.animation = "none";
         }
 
         function closeLetter() {
             document.getElementById("letter").classList.remove("show");
+            // Volver a activar el efecto wiggle en el sobre
+            document.getElementById("envelope").style.animation = "wiggle 3s infinite ease-in-out";
         }
     </script>
 </body>
