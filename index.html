@@ -26,6 +26,7 @@
             width: 300px;
             height: 200px;
             cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra paralela aplicada solo al sobre */
         }
 
         /* Imagen del sobre con efecto wiggle */
@@ -35,6 +36,7 @@
             background-image: url('https://github.com/byfabb/regalo-cumplea-os/raw/main/sobre.png'); /* Imagen del sobre desde GitHub */
             background-size: cover;
             background-position: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra paralela solo a la imagen del sobre */
             animation: wiggle 3s infinite ease-in-out; /* Efecto wiggle en el sobre */
         }
 
@@ -61,8 +63,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 1200px; /* Carta más grande */
+            width: 90%; /* Hacer el contenedor más grande */
+            max-width: 1400px; /* Aumentar el tamaño del contenedor */
             font-size: 24px; /* Texto más pequeño */
             color: #333;
             line-height: 1.8;
