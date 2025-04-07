@@ -5,64 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Cumpleaños, Vale</title>
     <style>
-        /* Fondo verde coral con gradiente */
+        /* Fondo con la imagen de telaraña */
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
+            background-image: url('https://github.com/byfabb/regalo-cumplea-os/blob/main/Fondo.jpg'); /* Fondo de telaraña desde GitHub */
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, #FF6F61, #FF9A8B); /* Gradiente de verde coral */
             font-family: Arial, sans-serif;
-            overflow: hidden;
         }
 
-        /* Contenedor de la carta como sobre */
+        /* Contenedor del sobre */
         .envelope-container {
             position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Estilo de la carta (sobre) */
-        .envelope {
             width: 300px;
             height: 200px;
-            background-color: #e74c3c; /* Rojo para la carta */
-            border-radius: 15px;
-            position: absolute;
-            z-index: 2;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            transform-origin: center;
-            transition: transform 0.3s ease;
-            overflow: hidden;
         }
 
-        /* Telaraña con patrón hexagonal que cubre toda la pantalla */
-        .web {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Imagen del sobre */
+        .envelope {
             width: 100%;
             height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            background: repeating-radial-gradient(circle, transparent 0px, transparent 20px, rgba(255, 255, 255, 0.4) 20px, rgba(255, 255, 255, 0.4) 40px);
-            transform: rotate(30deg);
-            background-size: 40px 40px; /* Controla el tamaño de los hexágonos */
+            background-image: url('https://github.com/byfabb/regalo-cumplea-os/blob/main/sobre-azul.png'); /* Imagen del sobre desde GitHub */
+            background-size: cover;
+            background-position: center;
         }
 
-        /* Efecto de la carta al hacer clic (abrir horizontalmente) */
-        .envelope:hover {
-            transform: scale(1.05);
-        }
-
-        /* Carta que se muestra al hacer clic (animación horizontal) */
+        /* Carta que se muestra al hacer clic */
         .letter {
             display: none;
             padding: 20px;
@@ -80,9 +54,11 @@
             line-height: 1.5;
             z-index: 3;
             transform-origin: top;
+            max-height: 80%;
+            overflow-y: auto; /* Habilita el scroll para la carta */
         }
 
-        /* Estilo del título */
+        /* Estilo del título de la carta */
         .letter h2 {
             margin-top: 0;
             font-size: 24px;
@@ -109,14 +85,9 @@
     </style>
 </head>
 <body>
-    <div class="envelope-container">
-        <!-- Telaraña hexagonal que cubre toda la pantalla -->
-        <div class="web"></div>
-        <!-- Sobre -->
-        <div class="envelope" onclick="openLetter()">
-            <!-- Puedes añadir una imagen de telaraña aquí si lo prefieres -->
-        </div>
-        <!-- Carta -->
+    <div class="envelope-container" onclick="openLetter()">
+        <div class="envelope"></div>
+        <!-- Carta que se revela al hacer clic -->
         <div class="letter" id="letter">
             <h2>Hola, Vale!</h2>
             <p>Primero que nada, feliz cumpleaños! Espero que hoy te sirvas tu plato favorito, sonrías mucho y disfrutes de todo lo que te hace feliz.</p>
