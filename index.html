@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Cumpleaños, Vale</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Fondo con la imagen de telaraña y decoración */
         body {
@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif; /* Tipografía moderna */
         }
 
         /* Contenedor del sobre */
@@ -116,6 +116,12 @@
         .close-button:hover {
             background-color: #c0392b;
         }
+
+        /* Estilos adicionales */
+        .close-button.hide {
+            display: none; /* Ocultar el botón cuando no se necesite */
+        }
+
     </style>
 </head>
 <body>
@@ -135,7 +141,7 @@
             <p>Feliz cumpleaños. Que esta nueva etapa te traiga felicidad y muchos sueños cumplidos. Ojalá verte pronto.</p>
             <p>FRVS</p>
             <!-- Botón para cerrar la carta -->
-            <button class="close-button" onclick="closeLetter()">Cerrar carta</button>
+            <button class="close-button" id="closeButton" onclick="closeLetter()">Cerrar carta</button>
         </div>
     </div>
 
@@ -144,12 +150,16 @@
             document.getElementById("letter").classList.add("show");
             // Eliminar el efecto wiggle del sobre al hacer clic
             document.getElementById("envelope").style.animation = "none";
+            // Mostrar el botón de cerrar
+            document.getElementById("closeButton").classList.remove("hide");
         }
 
         function closeLetter() {
             document.getElementById("letter").classList.remove("show");
             // Volver a activar el efecto wiggle en el sobre
             document.getElementById("envelope").style.animation = "wiggle 3s infinite ease-in-out";
+            // Ocultar el botón de cerrar
+            document.getElementById("closeButton").classList.add("hide");
         }
     </script>
 </body>
