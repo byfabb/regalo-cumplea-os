@@ -6,13 +6,13 @@
     <title>Feliz Cumpleaños, Vale</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Fondo con la imagen de telaraña (sin wiggle) */
+        /* Fondo con la imagen de telaraña y decoración */
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-image: url('https://github.com/tuusuario/repositorio/raw/main/fondo.jpg'); /* Fondo de telaraña desde GitHub */
-            background-size: cover;
+            background-image: url('https://github.com/byfabb/regalo-cumplea-os/raw/main/Fondo.jpg'), radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px); /* Fondo de telaraña desde GitHub + decoración */
+            background-size: cover, 50px 50px; /* Fondo telaraña y patrón de líneas */
             background-position: center;
             display: flex;
             justify-content: center;
@@ -20,36 +20,22 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Contenedor del sobre */
+        /* Contenedor del sobre con sombra paralela */
         .envelope-container {
             position: relative;
             width: 300px;
             height: 200px;
             cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra paralela aplicada al sobre */
         }
 
-        /* Imagen del sobre con sombra paralela más pronunciada y wiggle */
+        /* Imagen del sobre */
         .envelope {
             width: 100%;
             height: 100%;
-            background-image: url('https://github.com/tuusuario/repositorio/raw/main/sobre-azul.png'); /* Imagen del sobre desde GitHub */
+            background-image: url('https://github.com/byfabb/regalo-cumplea-os/raw/main/sobre.png'); /* Imagen del sobre desde GitHub */
             background-size: cover;
             background-position: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra paralela más profunda */
-            animation: wiggle 3s infinite ease-in-out; /* Efecto wiggle */
-        }
-
-        /* Animación wiggle para el sobre */
-        @keyframes wiggle {
-            0% {
-                transform: rotate(0deg);
-            }
-            50% {
-                transform: rotate(2deg);
-            }
-            100% {
-                transform: rotate(0deg);
-            }
         }
 
         /* Carta que se muestra al hacer clic */
@@ -64,10 +50,10 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
-            max-width: 900px; /* Aumentar el tamaño de la carta */
-            font-size: 24px; /* Texto más grande */
+            max-width: 1200px; /* Carta más grande */
+            font-size: 26px; /* Texto más grande */
             color: #333;
-            line-height: 1.6;
+            line-height: 1.8;
             z-index: 3;
             transform-origin: top;
             max-height: 80%;
@@ -78,7 +64,7 @@
         /* Estilo del título de la carta */
         .letter h2 {
             margin-top: 0;
-            font-size: 36px; /* Título más grande */
+            font-size: 40px; /* Título más grande */
             text-align: center;
             color: #e74c3c;
             font-family: 'Playfair Display', serif;
@@ -104,7 +90,7 @@
 </head>
 <body>
     <div class="envelope-container" onclick="openLetter()">
-        <div class="envelope" id="envelope"></div>
+        <div class="envelope"></div>
         <!-- Carta que se revela al hacer clic -->
         <div class="letter" id="letter">
             <h2>Hola, Vale!</h2>
@@ -124,7 +110,6 @@
     <script>
         function openLetter() {
             document.getElementById("letter").classList.add("show");
-            document.getElementById("envelope").style.animation = "none";  /* Detener el efecto wiggle en el sobre al hacer clic */
         }
     </script>
 </body>
