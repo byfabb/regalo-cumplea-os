@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Cumpleaños, Vale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        /* Fondo con la imagen de telaraña */
+        /* Fondo con la imagen de telaraña y efecto wiggle */
         body {
             margin: 0;
             padding: 0;
@@ -16,7 +17,21 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            animation: wiggle 3s infinite ease-in-out; /* Efecto wiggle en el fondo */
+        }
+
+        /* Animación wiggle para el fondo */
+        @keyframes wiggle {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(2deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
         }
 
         /* Contenedor del sobre */
@@ -39,48 +54,63 @@
         /* Carta que se muestra al hacer clic */
         .letter {
             display: none;
-            padding: 20px;
+            padding: 30px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Drop shadow para la carta */
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
-            max-width: 380px;
-            font-size: 16px;
+            max-width: 600px; /* Aumentar el tamaño de la carta */
+            font-size: 18px;
             color: #333;
-            line-height: 1.5;
+            line-height: 1.6;
             z-index: 3;
             transform-origin: top;
             max-height: 80%;
             overflow-y: auto; /* Habilita el scroll para la carta */
+            animation: expand 0.5s ease-out forwards, wiggleCard 1s infinite ease-in-out; /* Animación al expandir la carta y wiggle */
         }
 
         /* Estilo del título de la carta */
         .letter h2 {
             margin-top: 0;
-            font-size: 24px;
+            font-size: 28px;
             text-align: center;
             color: #e74c3c;
+            font-family: 'Playfair Display', serif;
         }
 
-        /* Animación de la carta (abriéndose horizontalmente) */
-        .letter.show {
-            display: block;
-            animation: slideInHorizontal 0.5s ease-out forwards;
-        }
-
-        @keyframes slideInHorizontal {
+        /* Animación de expansión de la carta */
+        @keyframes expand {
             from {
-                transform: translate(-50%, -50%) scaleX(0.8);
+                transform: translate(-50%, -50%) scale(0.8);
                 opacity: 0;
             }
             to {
-                transform: translate(-50%, -50%) scaleX(1);
+                transform: translate(-50%, -50%) scale(1);
                 opacity: 1;
             }
+        }
+
+        /* Animación wiggle de la carta */
+        @keyframes wiggleCard {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(1deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+        }
+
+        /* Carta abierta */
+        .letter.show {
+            display: block;
         }
     </style>
 </head>
