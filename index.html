@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Cumpleaños, Vale</title>
     <style>
-        /* Fondo verde coral con gradiente */
+        /* Fondo con gradiente verde coral */
         body {
             margin: 0;
             padding: 0;
@@ -18,23 +18,25 @@
             overflow: hidden;
         }
 
-        /* Estilo de la carta */
+        /* Estilo de la carta como un sobre */
         .envelope {
-            width: 300px;
-            height: 400px;
+            width: 400px;
+            height: 300px;
             background-color: #e74c3c; /* Rojo para la carta */
             border-radius: 15px;
             position: relative;
             cursor: pointer;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transform-origin: center;
             transition: transform 0.3s ease;
+            overflow: hidden;
         }
 
         /* Telarañas blancas decorativas */
         .envelope::before {
             content: '';
             position: absolute;
-            top: 20px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
@@ -45,7 +47,7 @@
             pointer-events: none;
         }
 
-        /* Interacción al pasar el clic (efecto) */
+        /* Interacción al pasar el clic (efecto de ampliación) */
         .envelope:hover {
             transform: scale(1.05);
         }
@@ -62,11 +64,11 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
-            max-width: 400px;
-            z-index: 2;
+            max-width: 380px;
             font-size: 16px;
             color: #333;
             line-height: 1.5;
+            z-index: 2;
         }
 
         /* Estilo del título */
