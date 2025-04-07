@@ -55,7 +55,7 @@
         .letter {
             display: none;
             padding: 60px;
-            background-color: white;
+            background-color: #f5f5dc; /* Color crema para el fondo */
             border-radius: 10px;
             position: absolute;
             top: 50%;
@@ -98,6 +98,7 @@
         .letter.show {
             display: block;
         }
+
     </style>
 </head>
 <body>
@@ -124,16 +125,6 @@
             document.getElementById("letter").classList.add("show");
             // Eliminar el efecto wiggle del sobre al hacer clic
             document.getElementById("envelope").style.animation = "none";
-            // Mostrar el botón de cerrar
-            document.getElementById("closeButton").classList.remove("hide");
-        }
-
-        function closeLetter() {
-            document.getElementById("letter").classList.remove("show");
-            // Volver a activar el efecto wiggle en el sobre
-            document.getElementById("envelope").style.animation = "wiggle 3s infinite ease-in-out";
-            // Ocultar el botón de cerrar
-            document.getElementById("closeButton").classList.add("hide");
         }
     </script>
 </body>
