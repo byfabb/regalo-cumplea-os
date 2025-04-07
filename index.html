@@ -99,6 +99,24 @@
             display: block;
         }
 
+        /* Botón de cerrar carta */
+        .close-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 22px; /* Tamaño del texto en el botón */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-button:hover {
+            background-color: #c0392b;
+        }
+
     </style>
 </head>
 <body>
@@ -117,6 +135,8 @@
             <p>Eres una persona increíble. Y, con la mano en el corazón, una persona que me cambió la vida.</p>
             <p>Feliz cumpleaños. Que esta nueva etapa te traiga felicidad y muchos sueños cumplidos. Ojalá verte pronto.</p>
             <p>FRVS</p>
+            <!-- Botón para cerrar la carta -->
+            <button class="close-button" onclick="closeLetter()">Cerrar carta</button>
         </div>
     </div>
 
@@ -125,6 +145,12 @@
             document.getElementById("letter").classList.add("show");
             // Eliminar el efecto wiggle del sobre al hacer clic
             document.getElementById("envelope").style.animation = "none";
+        }
+
+        function closeLetter() {
+            document.getElementById("letter").classList.remove("show");
+            // Volver a activar el efecto wiggle en el sobre
+            document.getElementById("envelope").style.animation = "wiggle 3s infinite ease-in-out";
         }
     </script>
 </body>
