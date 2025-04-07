@@ -26,9 +26,10 @@
             width: 300px;
             height: 200px;
             cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra paralela aplicada solo al sobre */
         }
 
-        /* Imagen del sobre con sombra paralela aplicada solo a la imagen */
+        /* Imagen del sobre con sombra paralela */
         .envelope {
             width: 100%;
             height: 100%;
@@ -36,12 +37,26 @@
             background-size: cover;
             background-position: center;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra paralela solo a la imagen del sobre */
+            animation: wiggle 3s infinite ease-in-out; /* Efecto wiggle en el sobre */
+        }
+
+        /* Animación wiggle para el sobre */
+        @keyframes wiggle {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(2deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
         }
 
         /* Carta que se muestra al hacer clic */
         .letter {
             display: none;
-            padding: 50px;
+            padding: 60px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Drop shadow para la carta */
@@ -51,20 +66,20 @@
             transform: translate(-50%, -50%);
             width: 80%;
             max-width: 1200px; /* Carta más grande */
-            font-size: 32px; /* Texto más grande */
+            font-size: 48px; /* Aumento del tamaño del texto dentro de la carta */
             color: #333;
             line-height: 1.8;
             z-index: 3;
             transform-origin: top;
             max-height: 80%;
             overflow-y: auto; /* Habilita el scroll para la carta */
-            animation: expand 0.5s ease-out forwards; /* Animación de expansión */
+            animation: expand 0.5s ease-out forwards, wiggleCard 1s infinite ease-in-out; /* Animación de expansión y wiggle en la carta */
         }
 
         /* Estilo del título de la carta */
         .letter h2 {
             margin-top: 0;
-            font-size: 48px; /* Título más grande */
+            font-size: 60px; /* Título más grande */
             text-align: center;
             color: #e74c3c;
             font-family: 'Playfair Display', serif;
@@ -82,6 +97,19 @@
             }
         }
 
+        /* Animación wiggle de la carta */
+        @keyframes wiggleCard {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(2deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+        }
+
         /* Carta abierta */
         .letter.show {
             display: block;
@@ -96,7 +124,7 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 22px; /* Tamaño del texto en el botón */
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
