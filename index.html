@@ -5,70 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Cumpleaños, Vale</title>
     <style>
+        /* Fondo verde coral con gradiente */
         body {
-            background-color: #FF6F61; /* Verde coral */
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            background: linear-gradient(45deg, #FF6F61, #FF9A8B); /* Gradiente de verde coral */
+            font-family: Arial, sans-serif;
             overflow: hidden;
-            background-image: url('https://github.com/byfabb/regalo-cumplea-os/blob/main/TELARA%C3%91A.png'); /* URL de fondo de telarañas de Spiderman */
-            background-size: cover;
         }
+
+        /* Estilo de la carta */
         .envelope {
-            width: 200px;
-            height: 200px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            width: 300px;
+            height: 400px;
+            background-color: #e74c3c; /* Rojo para la carta */
+            border-radius: 15px;
             position: relative;
             cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
+
+        /* Telarañas blancas decorativas */
         .envelope::before {
             content: '';
             position: absolute;
-            top: 50%;
+            top: 20px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background-image: url('https://github.com/byfabb/regalo-cumplea-os/blob/main/TELARA%C3%91A.png'); /* URL de telarañas */
-            background-size: contain;
-            background-repeat: no-repeat;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, white 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 1;
+            pointer-events: none;
         }
+
+        /* Interacción al pasar el clic (efecto) */
+        .envelope:hover {
+            transform: scale(1.05);
+        }
+
+        /* Carta que se muestra al hacer clic */
         .letter {
             display: none;
             padding: 20px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            width: 80%;
-            max-width: 600px;
-            margin-top: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            z-index: 2;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Estilo del título */
+        .letter h2 {
+            margin-top: 0;
+            font-size: 24px;
+            text-align: center;
+            color: #e74c3c;
+        }
+
+        /* Animación de la carta */
+        .letter.show {
+            display: block;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -60%) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="envelope" onclick="openLetter()"></div>
-    <div class="letter" id="letter">
-        <h2>Hola, Vale!</h2>
-        <p>Primero que nada, feliz cumpleaños! Espero que hoy te sirvas tu plato favorito, sonrías mucho y disfrutes de todo lo que te hace feliz.</p>
-        <p>Pensé bastante en qué regalarte, sabiendo que estás lejos. Y aunque una carta suene simple, me pareció bonito escribirte algo desde el corazón.</p>
-        <p>Es increíble pensar que ya tienes 25 años. Una adulta luchando por sus sueños... Y es increíble pensar que nos conocemos desde que teníamos 14.</p>
-        <p>Hoy solo quiero recordarte lo especial que has sido, y sigues siendo, para mí. Has tenido un impacto enorme en mi vida. Porque gracias a ti hoy soy una mejor persona. Tú me enseñaste cosas que marcaron quién soy.</p>
-        <p>De ti aprendí a ser fuerte, escuchando tus historias. De ti aprendí lo que sería hoy mi pasión, porque cuando éramos niños soñábamos con mundos de película y arte. Tú me hacías cartas y manualidades preciosas; yo soñaba con hacerte un video que refleje todo lo que veía en ti sin tener idea de cómo hacerlo. Y hoy, me dedico a editar videos y escribir guiones. Y gran parte de eso lo aprendí de ti.</p>
-        <p>Tengo muchos recuerdos contigo. Algunos me dieron lecciones. Otros, simplemente me hacen cerrar los ojos y reír. Esos son los que más atesoro.</p>
-        <p>En este día tan tuyo, solo quiero que recuerdes el impacto que tienes en los demás. Eres una guerrera, estás luchando por tu futuro, y aunque haya días malos o dudas, estás dando lo mejor de ti.</p>
-        <p>Eres una persona increíble. Y, con la mano en el corazón, una persona que me cambió la vida.</p>
-        <p>Feliz cumpleaños. Que esta nueva etapa te traiga felicidad y muchos sueños cumplidos. Ojalá verte pronto.</p>
-        <p>FRVS</p>
+    <div class="envelope" onclick="openLetter()">
+        <!-- Imagen de telarañas estática como decoración -->
+        <div class="letter" id="letter">
+            <h2>Hola, Vale!</h2>
+            <p>Primero que nada, feliz cumpleaños! Espero que hoy te sirvas tu plato favorito, sonrías mucho y disfrutes de todo lo que te hace feliz.</p>
+            <p>Pensé bastante en qué regalarte, sabiendo que estás lejos. Y aunque una carta suene simple, me pareció bonito escribirte algo desde el corazón.</p>
+            <p>Es increíble pensar que ya tienes 25 años. Una adulta luchando por sus sueños... Y es increíble pensar que nos conocemos desde que teníamos 14.</p>
+            <p>Hoy solo quiero recordarte lo especial que has sido, y sigues siendo, para mí. Has tenido un impacto enorme en mi vida. Porque gracias a ti hoy soy una mejor persona. Tú me enseñaste cosas que marcaron quién soy.</p>
+            <p>De ti aprendí a ser fuerte, escuchando tus historias. De ti aprendí lo que sería hoy mi pasión, porque cuando éramos niños soñábamos con mundos de película y arte. Tú me hacías cartas y manualidades preciosas; yo soñaba con hacerte un video que refleje todo lo que veía en ti sin tener idea de cómo hacerlo. Y hoy, me dedico a editar videos y escribir guiones. Y gran parte de eso lo aprendí de ti.</p>
+            <p>Tengo muchos recuerdos contigo. Algunos me dieron lecciones. Otros, simplemente me hacen cerrar los ojos y reír. Esos son los que más atesoro.</p>
+            <p>En este día tan tuyo, solo quiero que recuerdes el impacto que tienes en los demás. Eres una guerrera, estás luchando por tu futuro, y aunque haya días malos o dudas, estás dando lo mejor de ti.</p>
+            <p>Eres una persona increíble. Y, con la mano en el corazón, una persona que me cambió la vida.</p>
+            <p>Feliz cumpleaños. Que esta nueva etapa te traiga felicidad y muchos sueños cumplidos. Ojalá verte pronto.</p>
+            <p>FRVS</p>
+        </div>
     </div>
 
     <script>
         function openLetter() {
-            document.getElementById("letter").style.display = "block";
+            document.getElementById("letter").classList.add("show");
         }
     </script>
 </body>
